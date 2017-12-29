@@ -23,9 +23,9 @@ io.on('connection',(socket)=>{
 
     socket.on('createMessage',(message)=>{
        console.log('Message created ',message);
-       io.emit('newMessage',{
-           from : 'AwesomeChap',
-           text : 'Hi!',
+       socket.broadcast.emit('newMessage',{ //io.emit sends the doc to everyone on connection including us
+           from : message.from,             //socket.broadcast.emt sends the doc to everyone on connection excluding us
+           text : message.text,
            createdAt : new Date().getTime()
        });
     });
