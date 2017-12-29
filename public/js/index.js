@@ -6,7 +6,7 @@ socket.on('connect',function(){
     //     text : 'hello! all well'
     //  });
 });
-socket.on('newMessage',(message)=>{
+socket.on('newMessage',function(message){
    console.log('New Message ',message);
 });
 
