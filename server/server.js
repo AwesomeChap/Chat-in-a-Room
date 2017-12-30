@@ -1,6 +1,3 @@
-/**
- * Created by HP on 29-12-2017.
- */
 const path = require('path');
 const http = require('http');
 const express = require('express');
@@ -29,7 +26,7 @@ io.on('connection',(socket)=>{
     });
 
     socket.on('createLocationMessage',function (coords) {
-        io.emit('newMessage',generateMessage('Admin',`${coords.latitude},${coords.longitude}`));
+        //io.emit('newMessage',generateMessage('Admin',`${coords.latitude},${coords.longitude}`));
         io.emit('newLocationMessage',generateLocationMessage('Admin',coords.latitude,coords.longitude));
     });
 
