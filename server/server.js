@@ -26,10 +26,10 @@ io.on('connection',(socket)=>{
         console.log('User disconnected!');
     });
 
-    socket.on('createMessage',(message)=> {
+    socket.on('createMessage',(message , callback)=> {
         console.log('Message created ', message);
-        /*socket.broadcast*/
         io.emit('newMessage', generateMessage(message.from, message.text));
+        callback('this is from server.js');
     });
     //io.emit sends the doc to everyone on connection including us
     //socket.broadcast.emt sends the doc to everyone on connection excluding us
