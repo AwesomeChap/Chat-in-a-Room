@@ -1,34 +1,45 @@
 var socket = io();
 
 function scrollToBottom(){
-    //selectors
-    var messages = jQuery('#messages');
-    var newMessage = messages.children('li:last-child');
-    //heights
-    var clientHeight = messages.prop('clientHeight');
-    var scrollTop = messages.scrollTop();
-    var scrollTop = messages.scrollTop();
-    var scrollHeight = messages.prop('scrollHeight');
-    var newMessageHeight = newMessage.innerHeight();
-    var lastMessageHeight = newMessage.prev().innerHeight();
-
-    //-----------------------
-    console.log('\nclientHeight : ',clientHeight);
-    console.log('scrollTop : ',scrollTop);
-    console.log('newMessageHeight : ',newMessageHeight);
-    console.log('lastMessageHeight : ',lastMessageHeight);
-    console.log('scrollHeight : ',scrollHeight);
-    //-----------------------
-
-    if(clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight)
-    {
-        console.log('\nShould scroll');
-        messages.scrollTop(scrollHeight);
-    }
+    // //selectors
+    // var messages = jQuery('#messages');
+    // var newMessage = messages.children('li:last-child');
+    // //heights
+    // var clientHeight = messages.prop('clientHeight');
+    // var scrollTop = messages.scrollTop();
+    // var scrollTop = messages.scrollTop();
+    // var scrollHeight = messages.prop('scrollHeight');
+    // var newMessageHeight = newMessage.innerHeight();
+    // var lastMessageHeight = newMessage.prev().innerHeight();
+    //
+    // //-----------------------
+    // console.log('\nclientHeight : ',clientHeight);
+    // console.log('scrollTop : ',scrollTop);
+    // console.log('newMessageHeight : ',newMessageHeight);
+    // console.log('lastMessageHeight : ',lastMessageHeight);
+    // console.log('scrollHeight : ',scrollHeight);
+    // //-----------------------
+    //
+    // if(clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight)
+    // {
+    //     console.log('\nShould scroll');
+    //     messages.scrollTop(scrollHeight);
+    // }
 }
 
 socket.on('connect',function(){
     console.log('Connected to server!');
+    var param = jQuery.deparam(window.location.search);
+    console.log(param);
+    socket.emit('join',param,function (err) {
+        if(err){
+            alert(err);
+            window.location.href = '/';
+        }
+        else{
+            console.log('Success!');
+        }
+    });
 });
 socket.on('newMessage',function(message){
     var formattedTime = moment(message.createdAt).format('h:mm a');
@@ -68,6 +79,16 @@ socket.on('newLocationMessage',function (message) {
 
 socket.on('disconnect',function(){
     console.log('Disconnected from Server!');
+});
+
+socket.on('updateUserList',function (users) {
+    var ul = jQuery('<ul></ul>');
+
+    users.forEach((user)=>{
+       ul.append(jQuery('<li></li>').text(user));
+    });
+
+    jQuery('#users').html(ul);
 });
 
 jQuery('#message-form').on('submit',function(e){
