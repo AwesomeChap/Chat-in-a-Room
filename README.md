@@ -4,7 +4,7 @@ https://room-chatx.herokuapp.com/
 
 <p align="center">
   <img src="https://github.com/AwesomeChap/Room_Chat/blob/master/public/img/chat.PNG" width="800" hspace="20">
-</p>
+</p>{: .shadow}
 
 ## Available Scripts
 
