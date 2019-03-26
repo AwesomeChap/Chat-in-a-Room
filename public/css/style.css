@@ -204,7 +204,7 @@ button:disabled {
 .form-field input{
     width: 100%;
     border-radius: 20px;
-    background: #eee;
+    background: #fff;
     outline: none;
 }
 
