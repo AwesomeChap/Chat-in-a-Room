@@ -109,9 +109,9 @@ locationButton.on('click',function () {
    if(!navigator.geolocation){
        return alert('Geolocation not support by your browser');
    }
-   locationButton.attr('disabled','disabled').text('Sending location...');
+   locationButton.attr('disabled','disabled').text('...');
    navigator.geolocation.getCurrentPosition(function (position) {
-       locationButton.removeAttr('disabled').text('Send Location >');
+       locationButton.removeAttr('disabled').html('<i class="fas fa-map-marker-alt">');
        socket.emit('createLocationMessage',{
            latitude : position.coords.latitude,
            longitude : position.coords.longitude
@@ -119,7 +119,7 @@ locationButton.on('click',function () {
            console.log('Position object emitted');
        });
    },function (err) {
+       locationButton.removeAttr('disabled').text('<i class="fas fa-map-marker-alt">');
        return alert('Unable to fetch your location');
-       locationButton.removeAttr('disabled').text('Send Location >');
    });
 });

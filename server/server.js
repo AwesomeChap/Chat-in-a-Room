@@ -37,7 +37,7 @@ io.on('connection',(socket)=>{
        //socket.leave(group);
        //socket.join(group);
        //io.emit --> io.to(group).emit;
-       //spcket.broadcast.emit --> socket.broadcast.to(group).emit;
+       //socket.broadcast.emit --> socket.broadcast.to(group).emit;
        //socket.emit
        callback('Invalid Name | Room !');
    }

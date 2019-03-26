@@ -1,29 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Join | ChatApp</title>
     <meta name="veiwport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand|Mogra" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="centered-form">
-    <div class="centered-form__form">
-        <form action="/chat.html">
-            <div class="form-field">
-                <h3>Join a Chat</h3>
+
+<body>
+    <div class="lp">
+        <div class="left">
+            <img src="https://image.freepik.com/free-vector/characters-people-chatting-through-smartphones_53876-43013.jpg"
+                alt="">
+        </div>
+        <div class="right">
+            <div class="right-inner">
+                <div class="heading">ROOM_CHAT</div>
+                <div class="description">An app doing job of bringing distant close ones in one room</div>
+                <div onclick="getStarted()" class="get-started-btn"> 
+                    <span class="get-started-btn-text">Start Chatting</span>
+                    <i class="fas fa-arrow-right"></i> 
+                </div>
             </div>
-            <div class="form-field">
-                <label>Display name</label>
-                <input type="text" name="name" autofocus/>
+            <div class="form">
+                <form action="/chat.html">
+                    <div class="form-field">
+                        <h3>Join a Chat</h3>
+                    </div>
+                    <div class="form-field">
+                        <label>Display name</label>
+                        <input type="text" name="name" autofocus />
+                    </div>
+                    <div class="form-field">
+                        <label>Room name</label>
+                        <input type="text" name="room" />
+                    </div>
+                    <div class="form-field">
+                        <button><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </form>
             </div>
-            <div class="form-field">
-                <label>Room name</label>
-                <input type="text" name="room"/>
-            </div>
-            <div class="form-field">
-                <button>Join >></button>
-            </div>
-        </form>
+        </div>
     </div>
+    <script>
+        let form = document.querySelector('.form');
+        let startPage = document.querySelector('.right-inner');
+        let btn = document.querySelector('.get-started-btn');
+        let getStarted = function () {
+            // alert('he')
+            console.log(startPage);
+            startPage.classList.add('disappear-right');
+            setTimeout(() => {
+                startPage.style.display = 'none';
+                form.style.display = 'block';
+            }, 300);
+        }
+    </script>
 </body>
+
 </html>
