@@ -1,6 +1,6 @@
 # Room_Chat
 Chat app which lets you do conversation like you are in a room.
-https://pure-reef-67142.herokuapp.com/
+https://room-chatx.herokuapp.com/
 
 <p align="center">
   <img src="https://github.com/AwesomeChap/supermarket/blob/master/public/img/chat.PNG" width="800" hspace="20">
