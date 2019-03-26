@@ -2,7 +2,9 @@
 Chat app which lets you do conversation like you are in a room.
 https://room-chatx.herokuapp.com/
 
-![room-chat-image](./public/img/chat.PNG){:.shadow}
+<div>
+  <img src="./public/img/chat.PNG" alt="room-chat-png"/>
+</div>
 
 ## Available Scripts
 
